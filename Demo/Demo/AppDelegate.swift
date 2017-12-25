@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
        
-        // application.isNetworkActivityIndicatorVisible = true
         guard let splitViewController = window?.rootViewController as? UISplitViewController,
             let mainNavController = splitViewController.viewControllers.first as? UINavigationController,
             let scanViewController = mainNavController.topViewController as? KMScanViewController,

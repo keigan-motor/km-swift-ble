@@ -89,9 +89,9 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     func didMeasurementUpdate(_ sender:KMMotor, position:Float32, velocity:Float32, torque:Float32){
         
         // debugprint("\(position), \(velocity), \(torque)")
-        let p = String(format: "%.2f", position.radToDeg()) // unit: Degree
-        let v = String(format: "%.2f", velocity.radPerSecToRPM()) // unit: RPM
-        let t = String(format: "%.4f", torque) // unit: N * m
+        let p = String(format: "%.1f", position.radToDeg()) // unit: Degree
+        let v = String(format: "%.1f", velocity.radPerSecToRPM()) // unit: RPM
+        let t = String(format: "%.2f", torque) // unit: N * m
         
         // メインスレッドで実行
         DispatchQueue.main.async {
@@ -138,7 +138,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBAction func speedSliderValueChanged(_ sender: Any) {
         let slider = sender as! UISlider
-        let val = round(slider.value * 100)/100
+        let val = round(slider.value * 10)/10
         speedToSend = val
         if speedSendingFlag == false {
             speedSendingFlag = true
