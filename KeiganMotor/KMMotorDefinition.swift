@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Grobal CommandArray
+// Grobal
 public var curveTypeArray: [KMMotorCurveType] = KMMotorCurveType.cases
 public var curveTypeStringArray:[String] { return curveTypeArray.map({$0.description})}
 
@@ -27,6 +27,5 @@ public enum KMMotorCurveType: UInt8,CustomStringConvertible, EnumEnumerable
             
         }
     }
-    
-    
 }
+

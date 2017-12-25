@@ -235,6 +235,7 @@ open class KMMotor : NSObject, CBPeripheralDelegate
             let gyrX = Int16.decode(data[8...9])
             let gyrY = Int16.decode(data[10...11])
             let gyrZ = Int16.decode(data[12...13])
+            
             self.delegate?.didIMUMeasurementUpdate(self, accelX: accX!, accelY: accY!, accelZ: accZ!, temp: temp!, gyroX: gyrX!, gyroY: gyrY!, gyroZ: gyrZ!)
             
             break

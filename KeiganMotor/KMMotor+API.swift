@@ -390,3 +390,61 @@ extension KMMotor {
     }
     
 }
+
+// MARK: - Unit Conversion related to Physics and IMU Measurement
+
+public protocol unitConvert {
+    // Physics
+    func radToDeg() -> Float32
+    func DegToRad() -> Float32
+    func radPerSecToRPM() -> Float32
+    func rPMToRadiansPerSec() -> Float32
+    // IMU Measurement
+    func accelGravity() -> Float32
+    func temperature() -> Float32
+    func gyroDegPerSec() -> Float32
+    func gyroRadPerSec() -> Float32
+}
+
+extension Float32 : unitConvert {
+    
+    public func radToDeg() -> Float32
+    {
+        return self * 180 / Float.pi
+    }
+    public func DegToRad() -> Float32
+    {
+        return self * Float.pi / 180
+    }
+    
+    public func radPerSecToRPM() -> Float32
+    {
+        return self * 60 / (2 * Float.pi)
+    }
+    
+    public func rPMToRadiansPerSec() -> Float32
+    {
+        return self * 2 * Float.pi / 60
+    }
+    
+    public func accelGravity() -> Float32
+    {
+        return self * 2 / 32767
+    }
+    
+    public func temperature() -> Float32
+    {
+        return self / 340.00 + 36.53
+    }
+    
+    public func gyroDegPerSec() -> Float32
+    {
+        return self * 250 / 32767
+    }
+    
+    public func gyroRadPerSec() -> Float32
+    {
+        return self * 0.00013316211
+    }
+    
+}
