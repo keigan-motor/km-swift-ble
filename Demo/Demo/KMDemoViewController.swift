@@ -25,24 +25,50 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBOutlet weak var enableSegment: UISegmentedControl!
     
-    @IBOutlet weak var speedTextField: UITextField!
+    @IBOutlet weak var speedTextField: UITextField!{
+        didSet {
+            speedTextField.delegate = self
+        }
+    }
     @IBOutlet weak var speedSlider: UISlider!
     
     var speedToSend: Float32! = 0
     var speedSendingFlag: Bool = false
     
-    @IBOutlet weak var moveToTextField: UITextField!
-    @IBOutlet weak var moveByTextField: UITextField!
+    @IBOutlet weak var moveToTextField: UITextField!{
+        didSet {
+            moveToTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var moveByTextField: UITextField!{
+        didSet {
+            moveByTextField.delegate = self
+        }
+    }
     
-    @IBOutlet weak var maxTorqueTextField: UITextField!
+    @IBOutlet weak var maxTorqueTextField: UITextField!{
+        didSet {
+            maxTorqueTextField.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        speedTextField.delegate = self
-        moveToTextField.delegate = self
-        moveByTextField.delegate = self
-        maxTorqueTextField.delegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        configureObserver()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        removeObserver()
     }
     
     // MARK: - KMMotor Delegate
@@ -63,9 +89,9 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     func didMeasurementUpdate(_ sender:KMMotor, position:Float32, velocity:Float32, torque:Float32){
         
         // debugprint("\(position), \(velocity), \(torque)")
-        let p = String(format: "%.2f", position)
-        let v = String(format: "%.2f", velocity)
-        let t = String(format: "%.4f", torque)
+        let p = String(format: "%.2f", position.radToDeg()) // unit: Degree
+        let v = String(format: "%.2f", velocity.radPerSecToRPM()) // unit: RPM
+        let t = String(format: "%.4f", torque) // unit: N * m
         
         // メインスレッドで実行
         DispatchQueue.main.async {
@@ -103,7 +129,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         let tf = sender as! UITextField
         guard let str = tf.text else {return}
         if let spd = Float32(str) {
-            motor?.speed(spd)
+            motor?.speed(rpm:spd)
             speedSlider.value = spd
         } else {
             print("Invalid Input Value")
@@ -118,7 +144,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
             speedSendingFlag = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { // dispatch after 50 msec.
                 self.speedTextField.text = "\(self.speedToSend!)"
-                self.motor?.speed(self.speedToSend)
+                self.motor?.speed(rpm:self.speedToSend)
                 self.speedSendingFlag = false
             }
         }
@@ -137,7 +163,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     @IBAction func moveToButtonTapped(_ sender: Any) {
         guard let str = moveToTextField.text else {return}
         if let pos = Float32(str){
-            motor?.move(to: pos)
+            motor?.move(toDegree:pos)
         } else {
             print("Invalid Input Value")
         }
@@ -150,7 +176,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     @IBAction func moveByButtonTapped(_ sender: Any) {
         guard let str = moveByTextField.text else {return}
         if let dist = Float32(str){
-            motor?.move(by: dist)
+            motor?.move(byDegree:dist)
         } else {
             print("Invalid Input Value")
         }
@@ -173,9 +199,47 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         maxTorqueButtonTapped(sender)
     }
 
+    // MARK: - UITextField
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    // Notificationを設定
+    func configureObserver() {
+        
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    // Notificationを削除
+    func removeObserver() {
+        
+        let notification = NotificationCenter.default
+        notification.removeObserver(self)
+    }
+    
+    // キーボードが現れた時に、画面全体をずらす。
+    @objc func keyboardWillShow(notification: Notification?) {
+        
+        let rect = (notification?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
+        UIView.animate(withDuration: duration!, animations: { () in
+            let transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
+            self.view.transform = transform
+            
+        })
+    }
+    
+    // キーボードが消えたときに、画面を戻す
+    @objc func keyboardWillHide(notification: Notification?) {
+        
+        let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? Double
+        UIView.animate(withDuration: duration!, animations: { () in
+            
+            self.view.transform = CGAffineTransform.identity
+        })
     }
     
 }

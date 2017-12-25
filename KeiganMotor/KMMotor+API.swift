@@ -227,30 +227,30 @@ extension KMMotor {
     }
     
     @discardableResult
-    open func move(to_ position:Float32) -> Self
+    open func move(to position:Float32) -> Self
     {
         writeControl(KMMotorCommand.moveTo, value: [position])
         return self
     }
     
     @discardableResult
-    open func move(to degree:Float32) -> Self
+    open func move(toDegree:Float32) -> Self
     {
-        let pos = degree.DegToRad()
+        let pos = toDegree.DegToRad()
         return move(to: pos)
     }
     
     @discardableResult
-    open func move(by_ distance:Float32) -> Self
+    open func move(by distance:Float32) -> Self
     {
         writeControl(KMMotorCommand.moveBy, value: [distance])
         return self
     }
     
     @discardableResult
-    open func move(by degree:Float32) -> Self
+    open func move(byDegree:Float32) -> Self
     {
-        let dist = degree.DegToRad()
+        let dist = byDegree.DegToRad()
         return move(by:dist)
     }
     

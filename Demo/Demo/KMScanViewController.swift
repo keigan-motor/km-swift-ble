@@ -17,15 +17,14 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     
     var selectedMotor: KMMotor?
     var shouldScanFirst = true
-    var scanButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action:#selector(scanButtonTapped))
+    var scanButton: UIBarButtonItem?
 
     weak var delegate: MotorSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.setRightBarButton(scanButton, animated: false)
-        
+        scanButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action:#selector(scanButtonTapped))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +68,6 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     
     // MARK: - Scan
     @objc func scanButtonTapped(){
-        print("scanButtonTapped")
         scan(5.0)
     }
     
@@ -86,11 +84,11 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
 
     // MARK: - Activity Indicator in Navigation Bar
     func displayNavBarActivity() {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicator.startAnimating()
-        let item = UIBarButtonItem(customView: indicator)
-        
+        let item = UIBarButtonItem(customView: indicator)        
         self.navigationItem.rightBarButtonItem = item
+
     }
     
     func dismissNavBarActivity() {
