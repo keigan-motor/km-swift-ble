@@ -179,16 +179,22 @@ extension KMMotor {
     @discardableResult
     open func speed(rpm:Float32) -> Self
     {
-        let spd:Float32 = rpm * 0.10471975512
+        let spd:Float32 = rpm.rPMToRadiansPerSec()
         return speed(spd)
     }
     
-    
-    
     @discardableResult
-    open func preset(position:Float32) -> Self
+    open func presetPosition(_ position:Float32) -> Self
     {
         writeControl(KMMotorCommand.presetPosition, value: [position])
+        return self
+    }
+    
+    @discardableResult
+    open func presetPosition(degree:Float32) -> Self
+    {
+        let pos:Float32 = degree.DegToRad()
+        presetPosition(pos)
         return self
     }
     
@@ -221,32 +227,30 @@ extension KMMotor {
     }
     
     @discardableResult
-    open func move(to position:Float32) -> Self
+    open func move(to_ position:Float32) -> Self
     {
         writeControl(KMMotorCommand.moveTo, value: [position])
         return self
     }
     
     @discardableResult
-    open func move(toDeg:Float32) -> Self
+    open func move(to degree:Float32) -> Self
     {
-        let pos = toDeg * 0.01745329251
+        let pos = degree.DegToRad()
         return move(to: pos)
     }
     
-    
-    
     @discardableResult
-    open func move(by distance:Float32) -> Self
+    open func move(by_ distance:Float32) -> Self
     {
         writeControl(KMMotorCommand.moveBy, value: [distance])
         return self
     }
     
     @discardableResult
-    open func move(byDeg:Float32) -> Self
+    open func move(by degree:Float32) -> Self
     {
-        let dist = byDeg * 0.01745329251
+        let dist = degree.DegToRad()
         return move(by:dist)
     }
     
