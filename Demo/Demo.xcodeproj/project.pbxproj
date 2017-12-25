@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10511D781FC80C480022624E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10511D771FC80C480022624E /* AppDelegate.swift */; };
+		10511D7D1FC80C480022624E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10511D7B1FC80C480022624E /* Main.storyboard */; };
+		10511D7F1FC80C480022624E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10511D7E1FC80C480022624E /* Assets.xcassets */; };
+		10511D821FC80C480022624E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10511D801FC80C480022624E /* LaunchScreen.storyboard */; };
+		10C0393E1FEDF57C003CA070 /* KMScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0393B1FEDF57C003CA070 /* KMScanCell.swift */; };
+		10C0393F1FEDF57C003CA070 /* KMScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0393C1FEDF57C003CA070 /* KMScanViewController.swift */; };
+		10C039401FEDF57C003CA070 /* KMDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0393D1FEDF57C003CA070 /* KMDemoViewController.swift */; };
+		10C039521FEDFE39003CA070 /* KMMotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039451FEDFE38003CA070 /* KMMotor.swift */; };
+		10C039531FEDFE39003CA070 /* KMMotor+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039461FEDFE38003CA070 /* KMMotor+API.swift */; };
+		10C039541FEDFE39003CA070 /* KMMotorUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039471FEDFE38003CA070 /* KMMotorUUID.swift */; };
+		10C039551FEDFE39003CA070 /* KMBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039481FEDFE38003CA070 /* KMBluetoothManager.swift */; };
+		10C039561FEDFE39003CA070 /* KMMotorDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039491FEDFE38003CA070 /* KMMotorDefinition.swift */; };
+		10C039571FEDFE39003CA070 /* KMMotorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0394A1FEDFE38003CA070 /* KMMotorCommand.swift */; };
+		10C039581FEDFE39003CA070 /* KMMotorLED.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0394B1FEDFE38003CA070 /* KMMotorLED.swift */; };
+		10C039591FEDFE39003CA070 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0394D1FEDFE38003CA070 /* Info.plist */; };
+		10C0395A1FEDFE39003CA070 /* TypeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0394F1FEDFE38003CA070 /* TypeUtility.swift */; };
+		10C0395B1FEDFE39003CA070 /* EnumEnumerable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039501FEDFE38003CA070 /* EnumEnumerable+Extension.swift */; };
+		10C0395C1FEDFE39003CA070 /* CRC16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039511FEDFE38003CA070 /* CRC16.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		10511D741FC80C480022624E /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10511D771FC80C480022624E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10511D7C1FC80C480022624E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10511D7E1FC80C480022624E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10511D811FC80C480022624E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		10511D831FC80C480022624E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10C0393B1FEDF57C003CA070 /* KMScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMScanCell.swift; sourceTree = "<group>"; };
+		10C0393C1FEDF57C003CA070 /* KMScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMScanViewController.swift; sourceTree = "<group>"; };
+		10C0393D1FEDF57C003CA070 /* KMDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMDemoViewController.swift; sourceTree = "<group>"; };
+		10C039451FEDFE38003CA070 /* KMMotor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMMotor.swift; sourceTree = "<group>"; };
+		10C039461FEDFE38003CA070 /* KMMotor+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KMMotor+API.swift"; sourceTree = "<group>"; };
+		10C039471FEDFE38003CA070 /* KMMotorUUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMMotorUUID.swift; sourceTree = "<group>"; };
+		10C039481FEDFE38003CA070 /* KMBluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMBluetoothManager.swift; sourceTree = "<group>"; };
+		10C039491FEDFE38003CA070 /* KMMotorDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMMotorDefinition.swift; sourceTree = "<group>"; };
+		10C0394A1FEDFE38003CA070 /* KMMotorCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMMotorCommand.swift; sourceTree = "<group>"; };
+		10C0394B1FEDFE38003CA070 /* KMMotorLED.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMMotorLED.swift; sourceTree = "<group>"; };
+		10C0394C1FEDFE38003CA070 /* KeiganMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeiganMotor.h; sourceTree = "<group>"; };
+		10C0394D1FEDFE38003CA070 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10C0394F1FEDFE38003CA070 /* TypeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeUtility.swift; sourceTree = "<group>"; };
+		10C039501FEDFE38003CA070 /* EnumEnumerable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnumEnumerable+Extension.swift"; sourceTree = "<group>"; };
+		10C039511FEDFE38003CA070 /* CRC16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRC16.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10511D711FC80C470022624E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10511D6B1FC80C470022624E = {
+			isa = PBXGroup;
+			children = (
+				10C039441FEDFE38003CA070 /* KeiganMotor */,
+				10511D761FC80C480022624E /* Demo */,
+				10511D751FC80C480022624E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10511D751FC80C480022624E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10511D741FC80C480022624E /* Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10511D761FC80C480022624E /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				10511D771FC80C480022624E /* AppDelegate.swift */,
+				10C0393C1FEDF57C003CA070 /* KMScanViewController.swift */,
+				10C0393B1FEDF57C003CA070 /* KMScanCell.swift */,
+				10C0393D1FEDF57C003CA070 /* KMDemoViewController.swift */,
+				10511D7B1FC80C480022624E /* Main.storyboard */,
+				10511D7E1FC80C480022624E /* Assets.xcassets */,
+				10511D801FC80C480022624E /* LaunchScreen.storyboard */,
+				10511D831FC80C480022624E /* Info.plist */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		10C039441FEDFE38003CA070 /* KeiganMotor */ = {
+			isa = PBXGroup;
+			children = (
+				10C039451FEDFE38003CA070 /* KMMotor.swift */,
+				10C039461FEDFE38003CA070 /* KMMotor+API.swift */,
+				10C039471FEDFE38003CA070 /* KMMotorUUID.swift */,
+				10C039481FEDFE38003CA070 /* KMBluetoothManager.swift */,
+				10C039491FEDFE38003CA070 /* KMMotorDefinition.swift */,
+				10C0394A1FEDFE38003CA070 /* KMMotorCommand.swift */,
+				10C0394B1FEDFE38003CA070 /* KMMotorLED.swift */,
+				10C0394C1FEDFE38003CA070 /* KeiganMotor.h */,
+				10C0394D1FEDFE38003CA070 /* Info.plist */,
+				10C0394E1FEDFE38003CA070 /* Utility */,
+			);
+			name = KeiganMotor;
+			path = ../KeiganMotor;
+			sourceTree = "<group>";
+		};
+		10C0394E1FEDFE38003CA070 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				10C0394F1FEDFE38003CA070 /* TypeUtility.swift */,
+				10C039501FEDFE38003CA070 /* EnumEnumerable+Extension.swift */,
+				10C039511FEDFE38003CA070 /* CRC16.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10511D731FC80C470022624E /* Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10511D861FC80C480022624E /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildPhases = (
+				10511D701FC80C470022624E /* Sources */,
+				10511D711FC80C470022624E /* Frameworks */,
+				10511D721FC80C470022624E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Demo;
+			productName = Demo;
+			productReference = 10511D741FC80C480022624E /* Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10511D6C1FC80C470022624E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Takashi Tokuda";
+				TargetAttributes = {
+					10511D731FC80C470022624E = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 10511D6F1FC80C470022624E /* Build configuration list for PBXProject "Demo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10511D6B1FC80C470022624E;
+			productRefGroup = 10511D751FC80C480022624E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10511D731FC80C470022624E /* Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10511D721FC80C470022624E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10C039591FEDFE39003CA070 /* Info.plist in Resources */,
+				10511D821FC80C480022624E /* LaunchScreen.storyboard in Resources */,
+				10511D7F1FC80C480022624E /* Assets.xcassets in Resources */,
+				10511D7D1FC80C480022624E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10511D701FC80C470022624E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10C039561FEDFE39003CA070 /* KMMotorDefinition.swift in Sources */,
+				10C039541FEDFE39003CA070 /* KMMotorUUID.swift in Sources */,
+				10C0395B1FEDFE39003CA070 /* EnumEnumerable+Extension.swift in Sources */,
+				10C0395A1FEDFE39003CA070 /* TypeUtility.swift in Sources */,
+				10C039581FEDFE39003CA070 /* KMMotorLED.swift in Sources */,
+				10C0395C1FEDFE39003CA070 /* CRC16.swift in Sources */,
+				10C039521FEDFE39003CA070 /* KMMotor.swift in Sources */,
+				10C039571FEDFE39003CA070 /* KMMotorCommand.swift in Sources */,
+				10C0393E1FEDF57C003CA070 /* KMScanCell.swift in Sources */,
+				10C0393F1FEDF57C003CA070 /* KMScanViewController.swift in Sources */,
+				10C039551FEDFE39003CA070 /* KMBluetoothManager.swift in Sources */,
+				10C039401FEDF57C003CA070 /* KMDemoViewController.swift in Sources */,
+				10C039531FEDFE39003CA070 /* KMMotor+API.swift in Sources */,
+				10511D781FC80C480022624E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		10511D7B1FC80C480022624E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10511D7C1FC80C480022624E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		10511D801FC80C480022624E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10511D811FC80C480022624E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10511D841FC80C480022624E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10511D851FC80C480022624E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10511D871FC80C480022624E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D2F8Z5WCUU;
+				INFOPLIST_FILE = Demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.keigan.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		10511D881FC80C480022624E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D2F8Z5WCUU;
+				INFOPLIST_FILE = Demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.keigan.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10511D6F1FC80C470022624E /* Build configuration list for PBXProject "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10511D841FC80C480022624E /* Debug */,
+				10511D851FC80C480022624E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10511D861FC80C480022624E /* Build configuration list for PBXNativeTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10511D871FC80C480022624E /* Debug */,
+				10511D881FC80C480022624E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10511D6C1FC80C470022624E /* Project object */;
+}
