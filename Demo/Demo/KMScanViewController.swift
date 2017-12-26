@@ -133,7 +133,6 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
         else {return}
         
         if m.isConnected {
-            print("motor is connected and move to detail")
             delegate?.motorSelected(m)
             splitViewController?.showDetailViewController(demoViewController, sender: nil)
             

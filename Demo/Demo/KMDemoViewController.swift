@@ -10,12 +10,17 @@ import Foundation
 import UIKit
 
 
-class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegate {
+class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegate, UIScrollViewDelegate {
     
     var motor: KMMotor? {
         didSet {
             self.title = motor?.name
             motor?.delegate = self
+        }
+    }
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.delegate = self
         }
     }
     
@@ -52,11 +57,15 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         }
     }
     
+    var activeTextField:UITextField?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
     }
+    
+    let screenHeight: CGFloat = UIScreen.main.bounds.height
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -93,7 +102,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         let v = String(format: "%.1f", velocity.radPerSecToRPM()) // unit: RPM
         let t = String(format: "%.2f", torque) // unit: N * m
         
-        // メインスレッドで実行
+        // Execute in Main thread
         DispatchQueue.main.async {
             self.positionLabel.text = "\(p)"
             self.velocityLabel.text = "\(v)"
@@ -165,7 +174,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         if let pos = Float32(str){
             motor?.move(toDegree:pos)
         } else {
-            print("Invalid Input Value")
+            print("Invalid Input Value in \(moveToTextField)")
         }
     }
     
@@ -178,7 +187,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         if let dist = Float32(str){
             motor?.move(byDegree:dist)
         } else {
-            print("Invalid Input Value")
+            print("Invalid Input Value in \(moveByTextField)")
         }
     }
     
@@ -191,57 +200,61 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         if let trq = Float32(str){
             motor?.maxTorque(trq)
         } else {
-            print("Invalid Input Value")
+            print("Invalid Input Value in \(maxTorqueTextField)")
         }
     }
     
     @IBAction func maxTorqueTextFieldEdited(_ sender: Any) {
         maxTorqueButtonTapped(sender)
     }
+    
 
-    // MARK: - UITextField
+    // MARK: - UITextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    // Notificationを設定
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeTextField = textField
+        return true
+    }
+
+    // MARK: ScrollView offset while editing TextField
     func configureObserver() {
-        
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
     }
     
-    // Notificationを削除
     func removeObserver() {
-        
-        let notification = NotificationCenter.default
-        notification.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    // キーボードが現れた時に、画面全体をずらす。
-    @objc func keyboardWillShow(notification: Notification?) {
-        
-        let rect = (notification?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-        let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-        UIView.animate(withDuration: duration!, animations: { () in
-            let transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
-            self.view.transform = transform
-            
-        })
+    @objc func keyboardWillShow(_ notification: Notification) {
+
+        let info = notification.userInfo!
+        let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        guard let textField = activeTextField else {return}
+        let absoluteRect = textField.convert(textField.frame, to: view)
+        // Bottom of textField
+        let textFieldBottom = absoluteRect.origin.y + textField.frame.origin.y + textField.frame.height
+        // Top of keyboard
+        let keyboardTop = screenHeight - keyboardFrame.size.height
+        // Overlap
+        let distance = textFieldBottom - keyboardTop
+        if distance >= 0 {
+            scrollView.contentOffset.y = distance + 20.0
+        }
     }
     
-    // キーボードが消えたときに、画面を戻す
-    @objc func keyboardWillHide(notification: Notification?) {
-        
-        let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? Double
-        UIView.animate(withDuration: duration!, animations: { () in
-            
-            self.view.transform = CGAffineTransform.identity
-        })
+    @objc func keyboardWillHide(_ notification: Notification) {
+        scrollView.contentOffset.y = 0
     }
     
+    // MARK: Hide Keyboard when the other area of the display is tapped
+    @IBAction func displayTapped(_ sender: Any) {
+        view.endEditing(true)
+    }
 }
 
 
