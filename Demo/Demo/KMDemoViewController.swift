@@ -18,6 +18,16 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
             motor?.delegate = self
         }
     }
+    var speedRPM: Float32 = 0
+    var positionDeg: Float32 = 0
+    var distanceDeg: Float32 = 0
+    var holdTorque: Float32 = 0
+    var maxTorque: Float32 = 1
+    var waitTimeSec: Float32 = 0
+    var tasksetIndex: UInt16 = 0
+    var motionIndex: UInt16 = 0
+    var isRecordingTaskset: Bool = false
+    
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             scrollView.delegate = self
@@ -30,39 +40,58 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBOutlet weak var enableSegment: UISegmentedControl!
     
+    @IBOutlet weak var speedStepper: UIStepper!
     @IBOutlet weak var speedTextField: UITextField!{
         didSet {
             speedTextField.delegate = self
         }
     }
-    @IBOutlet weak var speedSlider: UISlider!
     
-    var speedToSend: Float32! = 0
-    var speedSendingFlag: Bool = false
     
+    @IBOutlet weak var moveToStepper: UIStepper!
     @IBOutlet weak var moveToTextField: UITextField!{
         didSet {
             moveToTextField.delegate = self
         }
     }
+    
+    @IBOutlet weak var moveByStepper: UIStepper!
     @IBOutlet weak var moveByTextField: UITextField!{
         didSet {
             moveByTextField.delegate = self
         }
     }
     
-    @IBOutlet weak var torqueTextField: UITextField!{
+    @IBOutlet weak var holdTorqueStepper: UIStepper!
+    @IBOutlet weak var holdTorqueTextField: UITextField!{
         didSet {
-            torqueTextField.delegate = self
+            holdTorqueTextField.delegate = self
         }
     }
     
     
+    @IBOutlet weak var maxTorqueStepper: UIStepper!
     @IBOutlet weak var maxTorqueTextField: UITextField!{
         didSet {
             maxTorqueTextField.delegate = self
         }
     }
+    
+    
+    @IBOutlet weak var waitStepper: UIStepper!
+    @IBOutlet weak var waitTextField: UITextField!{
+        didSet {
+            waitTextField.delegate = self
+        }
+    }
+    
+    @IBOutlet weak var pauseSegment: UISegmentedControl!
+    
+    @IBOutlet weak var recordTasksetButton: UIButton!
+    @IBOutlet weak var tasksetIndexStepper: UIStepper!
+    @IBOutlet weak var tasksetIndexTextField: UITextField!
+    
+    @IBOutlet weak var recordingLabel: UILabel!
     
     var activeTextField:UITextField?
     
@@ -140,33 +169,27 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         motor?.free()
     }
     
+    @IBAction func speedButtonTapped(_ sender: Any) {
+        motor?.speed(rpm: speedRPM)
+    }
+    
+    @IBAction func speedStepperChanged(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        speedRPM = Float32(stepper.value)
+        speedTextField.text = String(speedRPM)
+    }
+    
     @IBAction func speedTextFieldEdited(_ sender: Any) {
-        print("spd txt")
         let tf = sender as! UITextField
         guard let str = tf.text else {return}
         if let spd = Float32(str) {
-            motor?.speed(rpm:spd)
-            speedSlider.value = spd
+            speedRPM = spd
+            speedStepper.value = Double(spd)
         } else {
-            print("Invalid Input Value")
+            print("Invalid Input Value in \(speedTextField)")
         }
     }
     
-    @IBAction func speedSliderValueChanged(_ sender: Any) {
-        let slider = sender as! UISlider
-        let val = round(slider.value * 10)/10
-        speedToSend = val
-        if speedSendingFlag == false {
-            speedSendingFlag = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { // dispatch after 50 msec.
-                self.speedTextField.text = "\(self.speedToSend!)"
-                self.motor?.speed(rpm:self.speedToSend)
-                self.speedSendingFlag = false
-            }
-        }
-    }
-    
-
     
     @IBAction func runReverseButtonTapped(_ sender: Any) {
         motor?.runReverse()
@@ -177,60 +200,188 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     }
     
     @IBAction func moveToButtonTapped(_ sender: Any) {
-        guard let str = moveToTextField.text else {return}
-        if let pos = Float32(str){
-            motor?.move(toDegree:pos)
+        motor?.move(toDegree:positionDeg)
+    }
+    
+    @IBAction func moveToStepperChanged(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        positionDeg = Float32(stepper.value)
+        moveToTextField.text = String(positionDeg)
+    }
+    
+    
+    @IBAction func moveToTextFieldEdited(_ sender: Any) {
+        let tf = sender as! UITextField
+        guard let str = tf.text else {return}
+        if let pos = Float32(str) {
+            positionDeg = pos
+            moveToStepper.value = Double(pos)
         } else {
             print("Invalid Input Value in \(moveToTextField)")
         }
     }
     
-    @IBAction func moveToTextFieldEdited(_ sender: Any) {
-        moveToButtonTapped(sender)
+    @IBAction func moveByButtonTapped(_ sender: Any) {
+        motor?.move(byDegree: distanceDeg)
     }
     
-    @IBAction func moveByButtonTapped(_ sender: Any) {
-        guard let str = moveByTextField.text else {return}
-        if let dist = Float32(str){
-            motor?.move(byDegree:dist)
+    @IBAction func moveByStepperTapped(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        distanceDeg = Float32(stepper.value)
+        moveByTextField.text = String(distanceDeg)
+    }
+    
+    
+    @IBAction func moveByTextFieldEdited(_ sender: Any) {
+        let tf = sender as! UITextField
+        guard let str = tf.text else {return}
+        if let dist = Float32(str) {
+            distanceDeg = dist
+            moveByStepper.value = Double(dist)
         } else {
             print("Invalid Input Value in \(moveByTextField)")
         }
     }
     
-    @IBAction func moveByTextFieldEdited(_ sender: Any) {
-        moveByButtonTapped(sender)
+    
+    @IBAction func holdButtonTapped(_ sender: Any) {
+        motor?.hold(torque: holdTorque)
+    }
+
+    
+    @IBAction func holdTorqueStepperChanged(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        holdTorque = Float32(stepper.value)
+        holdTorqueTextField.text = String(holdTorque)
+    }
+    
+    @IBAction func holdTorqueTextFieldEdited(_ sender: Any) {
+        let tf = sender as! UITextField
+        guard let str = tf.text else {return}
+        if let trq = Float32(str){
+            holdTorque = trq
+            holdTorqueStepper.value = Double(trq)
+        } else {
+            print("Invalid Input Value in \(holdTorqueTextField)")
+        }
     }
     
     
-    
-    
     @IBAction func maxTorqueButtonTapped(_ sender: Any) {
-        guard let str = maxTorqueTextField.text else {return}
+        motor?.maxTorque(maxTorque)
+
+    }
+    
+    @IBAction func maxTorqueStepperChanged(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        maxTorque = Float32(stepper.value)
+        maxTorqueTextField.text = String(maxTorque)
+    }
+    
+    
+    @IBAction func maxTorqueTextFieldEdited(_ sender: Any) {
+        let tf = sender as! UITextField
+        guard let str = tf.text else {return}
         if let trq = Float32(str){
-            motor?.maxTorque(trq)
+            maxTorque = trq
+            maxTorqueStepper.value = Double(trq)
         } else {
             print("Invalid Input Value in \(maxTorqueTextField)")
         }
     }
     
-    @IBAction func maxTorqueTextFieldEdited(_ sender: Any) {
-        maxTorqueButtonTapped(sender)
+    
+    @IBAction func waitButtonTapped(_ sender: Any) {
+        motor?.wait(forSec: waitTimeSec)
     }
     
+    @IBAction func waitStepperChanged(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        waitTimeSec = Float32(stepper.value)
+        waitTextField.text = String(waitTimeSec)
+    }
     
-    @IBAction func torqueButtonTapped(_ sender: Any) {
-        guard let str = torqueTextField.text else {return}
-        if let trq = Float32(str){
-            motor?.hold(torque: trq)
+    @IBAction func waitTextFieldEdited(_ sender: Any) {
+        let tf = sender as! UITextField
+        guard let str = tf.text else {return}
+        if let time = Float32(str){
+            waitTimeSec = time
+            waitStepper.value = Double(time)
         } else {
-            print("Invalid Input Value in \(torqueTextField)")
+            print("Invalid Input Value in \(maxTorqueTextField)")
         }
     }
     
-    @IBAction func torqueTextFieldEdited(_ sender: Any) {
-        torqueButtonTapped(sender)
+    @IBAction func pauseSegmentChanged(_ sender: Any) {
+        let seg = sender as! UISegmentedControl
+        switch  seg.selectedSegmentIndex {
+        case 0:
+            motor?.resume()
+            break
+        case 1:
+            motor?.pause()
+            break
+        default:
+            break
+        }
     }
+    
+    @IBAction func recordTasksetButtonTapped(_ sender: Any) {
+        if (motor?.isRecordingTaskset)! {
+            motor?.stopRecordingTaskset()
+            recordingLabel.text = "■"
+            recordingLabel.textColor = UIColor.darkText
+            recordTasksetButton.setTitle("Record ●", for: UIControlState.normal)
+            recordTasksetButton.setTitleColor(UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
+, for: UIControlState.normal)
+        } else {
+            motor?.startRecordingTaskset(at: tasksetIndex)
+            recordingLabel.text = "●"
+            recordingLabel.textColor = UIColor.red
+            recordTasksetButton.setTitle("Stop ■", for: UIControlState.normal)
+            recordTasksetButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+        }
+        
+    }
+    
+    @IBAction func tasksetIndexStepperChanged(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        tasksetIndex = UInt16(stepper.value)
+        tasksetIndexTextField.text = String(tasksetIndex)
+    }
+    
+    @IBAction func tasksetIndexTextFieldEdited(_ sender: Any) {
+        let tf = sender as! UITextField
+        guard let str = tf.text else {return}
+        if let id = UInt16(str){
+            tasksetIndex = id
+            tasksetIndexStepper.value = Double(id)
+        } else {
+            print("Invalid Input Value in \(maxTorqueTextField)")
+        }
+    }
+    
+    @IBAction func eraseTasksetButtonTapped(_ sender: Any) {
+        let alert: UIAlertController = UIAlertController(title: "Confirmation", message: "Erase Taskset Index:\(tasksetIndex)?", preferredStyle:  UIAlertControllerStyle.alert)
+
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+            self.motor?.eraseTaskset(at: self.tasksetIndex)
+        })
+
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     // MARK: - UITextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
