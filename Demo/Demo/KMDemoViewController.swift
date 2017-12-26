@@ -51,6 +51,13 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         }
     }
     
+    @IBOutlet weak var torqueTextField: UITextField!{
+        didSet {
+            torqueTextField.delegate = self
+        }
+    }
+    
+    
     @IBOutlet weak var maxTorqueTextField: UITextField!{
         didSet {
             maxTorqueTextField.delegate = self
@@ -98,8 +105,8 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     func didMeasurementUpdate(_ sender:KMMotor, position:Float32, velocity:Float32, torque:Float32){
         
         // debugprint("\(position), \(velocity), \(torque)")
-        let p = String(format: "%.1f", position.radToDeg()) // unit: Degree
-        let v = String(format: "%.1f", velocity.radPerSecToRPM()) // unit: RPM
+        let p = String(format: "%.2f", position.radToDeg()) // unit: Degree
+        let v = String(format: "%.2f", velocity.radPerSecToRPM()) // unit: RPM
         let t = String(format: "%.2f", torque) // unit: N * m
         
         // Execute in Main thread
@@ -195,6 +202,9 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         moveByButtonTapped(sender)
     }
     
+    
+    
+    
     @IBAction func maxTorqueButtonTapped(_ sender: Any) {
         guard let str = maxTorqueTextField.text else {return}
         if let trq = Float32(str){
@@ -208,7 +218,20 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         maxTorqueButtonTapped(sender)
     }
     
-
+    
+    @IBAction func torqueButtonTapped(_ sender: Any) {
+        guard let str = torqueTextField.text else {return}
+        if let trq = Float32(str){
+            motor?.hold(torque: trq)
+        } else {
+            print("Invalid Input Value in \(torqueTextField)")
+        }
+    }
+    
+    @IBAction func torqueTextFieldEdited(_ sender: Any) {
+        torqueButtonTapped(sender)
+    }
+    
     // MARK: - UITextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

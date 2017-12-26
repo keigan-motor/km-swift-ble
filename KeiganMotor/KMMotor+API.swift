@@ -264,7 +264,7 @@ extension KMMotor {
     
     
     // MARK: Do Taskset
-    open func doTaskset(at index:UInt16, repeating:UInt32, x:Double)
+    open func doTaskset(at index:UInt16, repeating:UInt32)
     {
         writeControl(KMMotorCommand.doTaskset, value:[index, repeating])
     }

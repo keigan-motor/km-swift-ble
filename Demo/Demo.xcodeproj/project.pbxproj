@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10143B0A1FF21D4500C9C50F /* KMPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10143B091FF21D4500C9C50F /* KMPlayViewController.swift */; };
 		10511D781FC80C480022624E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10511D771FC80C480022624E /* AppDelegate.swift */; };
 		10511D7D1FC80C480022624E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10511D7B1FC80C480022624E /* Main.storyboard */; };
 		10511D7F1FC80C480022624E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10511D7E1FC80C480022624E /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10143B091FF21D4500C9C50F /* KMPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlayViewController.swift; sourceTree = "<group>"; };
 		10511D741FC80C480022624E /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10511D771FC80C480022624E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10511D7C1FC80C480022624E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				10C0393C1FEDF57C003CA070 /* KMScanViewController.swift */,
 				10C0393B1FEDF57C003CA070 /* KMScanCell.swift */,
 				10C0393D1FEDF57C003CA070 /* KMDemoViewController.swift */,
+				10143B091FF21D4500C9C50F /* KMPlayViewController.swift */,
 				10511D7B1FC80C480022624E /* Main.storyboard */,
 				10511D7E1FC80C480022624E /* Assets.xcassets */,
 				10511D801FC80C480022624E /* LaunchScreen.storyboard */,
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10C039561FEDFE39003CA070 /* KMMotorDefinition.swift in Sources */,
+				10143B0A1FF21D4500C9C50F /* KMPlayViewController.swift in Sources */,
 				10C039541FEDFE39003CA070 /* KMMotorUUID.swift in Sources */,
 				10C0395B1FEDFE39003CA070 /* EnumEnumerable+Extension.swift in Sources */,
 				10C0395A1FEDFE39003CA070 /* TypeUtility.swift in Sources */,

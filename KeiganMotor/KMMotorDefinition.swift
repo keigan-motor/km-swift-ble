@@ -29,3 +29,7 @@ public enum KMMotorCurveType: UInt8,CustomStringConvertible, EnumEnumerable
     }
 }
 
+// Taskset Index Array
+public let tasksetIndexArray:[UInt16] = ([UInt16])(0...49)
+// Motion Index Array
+public let motionIndexArray:[UInt16] = ([UInt16])(0...9)
