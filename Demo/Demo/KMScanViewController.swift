@@ -76,7 +76,7 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     
     // MARK: - Action
     @objc func actionButtonTapped(){
-        performSegue(withIdentifier: "actionPop", sender: nil)
+        performSegue(withIdentifier: "actionModal", sender: nil)
     }
     
     // MARK: - Scan
@@ -178,11 +178,9 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     
     // MARK: - Alert
     
-    // MARK: - Scan
-    @objc func playButtonTapped(){
-        
-    }
     
+    @IBAction func unwindToTop(segue: UIStoryboardSegue) {
+    }
 
 }
 
