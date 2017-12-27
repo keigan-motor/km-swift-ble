@@ -133,16 +133,18 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     func didMeasurementUpdate(_ sender:KMMotor, position:Float32, velocity:Float32, torque:Float32){
         
-        // debugprint("\(position), \(velocity), \(torque)")
-        let p = String(format: "%.2f", position.radToDeg()) // unit: Degree
-        let v = String(format: "%.2f", velocity.radPerSecToRPM()) // unit: RPM
-        let t = String(format: "%.2f", torque) // unit: N * m
-        
-        // Execute in Main thread
-        DispatchQueue.main.async {
-            self.positionLabel.text = "\(p)"
-            self.velocityLabel.text = "\(v)"
-            self.torqueLabel.text = "\(t)"
+        if sender == motor {
+            // debugprint("\(position), \(velocity), \(torque)")
+            let p = String(format: "%.2f", position.radToDeg()) // unit: Degree
+            let v = String(format: "%.2f", velocity.radPerSecToRPM()) // unit: RPM
+            let t = String(format: "%.2f", torque) // unit: N * m
+            
+            // Execute in Main thread
+            DispatchQueue.main.async {
+                self.positionLabel.text = "\(p)"
+                self.velocityLabel.text = "\(v)"
+                self.torqueLabel.text = "\(t)"
+            }
         }
     }
     
