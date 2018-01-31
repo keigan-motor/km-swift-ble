@@ -194,14 +194,17 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     
     @IBAction func runReverseButtonTapped(_ sender: Any) {
+        showEnableAndSpeedAlert()
         motor?.runReverse()
     }
     
     @IBAction func runForwardButtonTapped(_ sender: Any) {
+        showEnableAndSpeedAlert()
         motor?.runForward()
     }
     
     @IBAction func moveToButtonTapped(_ sender: Any) {
+        showEnableAndSpeedAlert()
         motor?.move(toDegree:positionDeg)
     }
     
@@ -224,6 +227,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     }
     
     @IBAction func moveByButtonTapped(_ sender: Any) {
+        showEnableAndSpeedAlert()
         motor?.move(byDegree: distanceDeg)
     }
     
@@ -431,6 +435,16 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     @IBAction func displayTapped(_ sender: Any) {
         view.endEditing(true)
     }
+    
+    func showEnableAndSpeedAlert() {
+        if motor?.isEnabled == false {
+            showAlert(title: "Motor is diabled", message: "Enable Motor first")
+        }
+        if speedRPM == 0 {
+            showAlert(title: "Speed is Zero", message: "Set Speed first")
+        }
+    }
+    
 }
 
 
