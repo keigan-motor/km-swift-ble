@@ -122,7 +122,6 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "scanCell", for: indexPath) as! KMScanCell
         cell.motor = KMBluetoothManager.sharedInstance.motors[indexPath.row]
-        
         print(cell.motor?.peripheral ?? "No peripheral.")
         print(cell.motor?.name ?? "No name.")
         

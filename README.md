@@ -2,6 +2,37 @@
 
 You can control your Keigan Motor via Bluetooth Low Energy using iOS devices.
 
+## Basic
+### Scan
+```swift
+KMBluetoothManager.sharedInstance.addObserver(self, forKeyPath:"motors", options: .new, context:nil)
+KMBluetoothManager.sharedInstance.scan()
+```
+### Connect to Keigan Motor and perform action
+```swift
+let motor:KMMotor = KMBluetoothManager.sharedInstance.motors[0]
+motor.connect() // Connect to Keigan Motor
+     .enable() // Power on
+     .speed(rpm:10) // Set speed
+     .runForward() // Rotate forward
+```
+## Examples
+### Move by 90 degree per 10 seconds
+```swift
+for i in 0 ..< 4 {
+motor.move(byDegree:90)
+     .wait(10000)
+}
+```
+Connect to Keigan Motor and perform action
+```swift
+let motor:KMMotor = KMBluetoothManager.sharedInstance.motors[0]
+motor.connect()
+motor.enable()
+motor.speed(rpm:10)
+motor.runForward()
+```
+
 ## Requirement
 
 - Swift4
