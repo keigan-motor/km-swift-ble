@@ -24,14 +24,6 @@ motor.move(byDegree:90)
      .wait(10000)
 }
 ```
-Connect to Keigan Motor and perform action
-```swift
-let motor:KMMotor = KMBluetoothManager.sharedInstance.motors[0]
-motor.connect()
-motor.enable()
-motor.speed(rpm:10)
-motor.runForward()
-```
 
 ## Requirement
 
