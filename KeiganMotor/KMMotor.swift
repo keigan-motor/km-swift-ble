@@ -99,7 +99,6 @@ open class KMMotor : NSObject, CBPeripheralDelegate
     }
     
 
-    // Internal , device managerが呼び出します
     internal func onConnected()
     {
         print("\(self) connected.")
@@ -143,16 +142,14 @@ open class KMMotor : NSObject, CBPeripheralDelegate
     
     // MARK: CBPeripheralDelegate
     
-    // サービスの発見、次にキャラクタリスティクスの検索をする
     open func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?)
     {
-        // エラーなきことを確認
+
         if error != nil {
             debugPrint("Unexpected error in \(#function), \(String(describing: error)).")
             return
         }
         
-        // FIXME サービスが一部なかった場合などは、どのような処理になる? すべてのサービスが発見できなければエラー?
         for service in peripheral.services! {
             peripheral.discoverCharacteristics(KMMotor.charUUIDs, for: service)
         }
@@ -162,10 +159,9 @@ open class KMMotor : NSObject, CBPeripheralDelegate
         })
     }
     
-    // サービスのインスタンスを作る
+
     open func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?)
     {
-        // エラーなきことを確認
         if error != nil {
             debugPrint("Unexpected error in \(#function), \(String(describing: error)).")
             return
@@ -200,13 +196,11 @@ open class KMMotor : NSObject, CBPeripheralDelegate
             return
         }
         
-        // キャラクタリスティクスから[UInt8]を取り出す。なければreturn。
+
         guard let characteristics_nsdata = characteristic.value else { return }
         
         var data = [UInt8](repeating: 0, count: characteristics_nsdata.count)
         (characteristics_nsdata as NSData).getBytes(&data, length: data.count)
-        
-        // debugPrint("didUpdate: \(characteristic.uuid) \(data)")
         
         guard data.count > 0  else { return }
         
@@ -256,18 +250,9 @@ open class KMMotor : NSObject, CBPeripheralDelegate
         self.name = peripheral.name ?? "(unknown)"
     }
     
-    //    optional public func peripheral(peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService])
-    //    optional public func peripheral(peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: NSError?)
-    //    optional public func peripheral(peripheral: CBPeripheral, didDiscoverIncludedServicesForService service: CBService, error: NSError?)
-    //    optional public func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
-    //    optional public func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?)
-    //    optional public func peripheral(peripheral: CBPeripheral, didDiscoverDescriptorsForCharacteristic characteristic: CBCharacteristic, error: NSError?)
-    //    optional public func peripheral(peripheral: CBPeripheral, didUpdateValueForDescriptor descriptor: CBDescriptor, error: NSError?)
-    //    optional public func peripheral(peripheral: CBPeripheral, didWriteValueForDescriptor descriptor: CBDescriptor, error: NSError?)
 }
 
 
-// サービスなど発見のヘルパーメソッド
 extension KMMotor {
     
     // Find Service from a specified UUID
@@ -329,7 +314,7 @@ extension KMMotor {
 // MARK: - Keigan Motor Read, Write and Notify method via Bluetooth Low Energy
 extension KMMotor {
     
-    // Set Notification and enable didUpdateValue delegate. 初期値を読みだすために、enabeledがtrueなら初回の読み出しが実行されます。
+    // Set Notification and enable didUpdateValue delegate.
     internal func setNotify(_ characteristic: CBCharacteristic, enabled: Bool)
     {
         peripheral.setNotifyValue(enabled, for: characteristic)
