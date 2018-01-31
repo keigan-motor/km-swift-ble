@@ -69,8 +69,10 @@ open class KMMotor : NSObject, CBPeripheralDelegate
     public var command: KMMotorCommand?
     public var taskID: UInt16 = 0
     
-    open var isEnabled: Bool
-    open var isQueuePaused: Bool
+    public var isEnabled: Bool
+    public var isQueuePaused: Bool
+    public var isRecordingTaskset: Bool
+    public var isTeachingMotion: Bool
     
     // MARK: Initializer
     init(manager: CBCentralManager, peripheral:CBPeripheral, name: String?)
@@ -81,8 +83,11 @@ open class KMMotor : NSObject, CBPeripheralDelegate
         self.name        = name ?? peripheral.name ?? ""
         self.led = KMMotorLED.init()
 
-        isEnabled = false // TODO: should read the property from Keigan Motor
-        isQueuePaused = false // TODO: should read the property from Keigan Motor
+        // TODO: should read the properties from Keigan Motor
+        isEnabled = false
+        isQueuePaused = false
+        isRecordingTaskset = false
+        isTeachingMotion = false
         
         super.init()
         
@@ -406,7 +411,7 @@ extension KMMotor {
             d.append(&crc, length:2)
             writeValue(c, data: d as Data)
             
-            print("Write \(command), ID:\(id), Value:\(value), CRC16:\(crc)]")
+            print("Write to \(name), \(command), ID:\(id), Value:\(value), CRC16:\(crc)]")
         }
     }
     

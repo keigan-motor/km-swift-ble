@@ -264,7 +264,7 @@ extension KMMotor {
     
     
     // MARK: Do Taskset
-    open func doTaskset(at index:UInt16, repeating:UInt32, x:Double)
+    open func doTaskset(at index:UInt16, repeating:UInt32)
     {
         writeControl(KMMotorCommand.doTaskset, value:[index, repeating])
     }
@@ -290,11 +290,13 @@ extension KMMotor {
     // MARK: Recording Taskset
     open func startRecordingTaskset(at index:UInt16)
     {
+        isRecordingTaskset = true
         writeControl(KMMotorCommand.startRecordingTaskset, value: [index])
     }
     
     open func stopRecordingTaskset()
     {
+        isRecordingTaskset = false
         writeControl(KMMotorCommand.stopRecordingTaskset)
     }
     
@@ -354,6 +356,13 @@ extension KMMotor {
     open func wait(for time: UInt32) -> Self
     {
         writeControl(KMMotorCommand.wait, value:[time])
+        return self
+    }
+    
+    @discardableResult
+    open func wait(forSec: Float32) -> Self
+    {
+        wait(for: UInt32(forSec * 1000))
         return self
     }
     

@@ -17,14 +17,14 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     
     var selectedMotor: KMMotor?
     var shouldScanFirst = true
+    var actionButton: UIBarButtonItem?
     var scanButton: UIBarButtonItem?
 
     weak var delegate: MotorSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setRightBarButton(scanButton, animated: false)
-        scanButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action:#selector(scanButtonTapped))
+        configBarButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +64,19 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
+    }
+    
+    // UIBarButtonItems
+    func configBarButtons(){
+        actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action:#selector(actionButtonTapped))
+        scanButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action:#selector(scanButtonTapped))
+        navigationItem.setLeftBarButton(actionButton, animated: false)
+        navigationItem.setRightBarButton(scanButton, animated: false)
+    }
+    
+    // MARK: - Action
+    @objc func actionButtonTapped(){
+        performSegue(withIdentifier: "actionModal", sender: nil)
     }
     
     // MARK: - Scan
@@ -165,8 +178,9 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     
     // MARK: - Alert
     
-
     
+    @IBAction func unwindToTop(segue: UIStoryboardSegue) {
+    }
 
 }
 
