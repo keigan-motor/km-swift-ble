@@ -15,10 +15,9 @@ motor.connect() // Connect to Keigan Motor
 ```
 ### Action
 ```swift
-motor.connect() // Connect to Keigan Motor
-.enable() // Power on
-.speed(rpm:10) // Set speed to 10 rpm
-.runForward() // Rotate forward
+motor.enable() // Power on
+     .speed(rpm:10) // Set speed to 10 rpm
+     .runForward() // Rotate forward
 ```
 
 ## Examples
