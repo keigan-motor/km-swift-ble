@@ -157,36 +157,42 @@ class KMPlayViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         for m in connectedMotors {
             m?.eraseMotion(at: teachingPlaybackIndex)
         }
+        showCommandAlert("Erase motion at \(teachingPlaybackIndex)")
     }
     
     @IBAction func prepareTeachingMotionTapped(_ sender: Any) {
         for m in connectedMotors {
             m?.prepareTeachingMotion(at: teachingPlaybackIndex, for: 65408)
         }
+        showCommandAlert("Prepare teaching motion at \(teachingPlaybackIndex)")
     }
     
     @IBAction func startTeachingMotionTapped(_ sender: Any) {
         for m in connectedMotors {
             m?.startTeachingMotion()
         }
+        showCommandAlert("Start teaching motion at \(teachingPlaybackIndex)")
     }
     
     @IBAction func stopTeachingMotionTapped(_ sender: Any) {
         for m in connectedMotors {
             m?.stopTeachingMotion()
         }
+        showCommandAlert("Stop teaching motion at \(teachingPlaybackIndex)")
     }
     
     @IBAction func preparePlaybackMotionTapped(_ sender: Any) {
         for m in connectedMotors {
             m?.preparePlaybackMotion(at: teachingPlaybackIndex, repeating: playbackRepeating, option: 0) // TODO option will be supported by device firmware in the future
         }
+        showCommandAlert("Prepare playback motion at \(teachingPlaybackIndex)")
     }
     
     @IBAction func startPlaybackMotionTapped(_ sender: Any) {
         for m in connectedMotors {
             m?.startPlaybackMotion()
         }
+        showCommandAlert("Start playback motion at \(teachingPlaybackIndex)")
     }
     
     
@@ -227,6 +233,7 @@ class KMPlayViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         for m in connectedMotors {
             m?.doTaskset(at: tasksetIndex, repeating: tasksetRepeating)
         }
+        showCommandAlert("Start playback motion at \(teachingPlaybackIndex)")
     }
     
 

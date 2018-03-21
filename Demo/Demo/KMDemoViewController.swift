@@ -155,9 +155,11 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         switch  seg.selectedSegmentIndex {
         case 0:
             motor?.disable()
+            showCommandAlert("Disable Motor")
             break
         case 1:
             motor?.enable()
+            showCommandAlert("Enable Motor")
             break
         default:
             break
@@ -166,13 +168,16 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBAction func stopButtonTapped(_ sender: Any) {
         motor?.stop()
+        showCommandAlert("Stop")
     }
     @IBAction func freeButtonTapped(_ sender: Any) {
         motor?.free()
+        showCommandAlert("Free")
     }
     
     @IBAction func speedButtonTapped(_ sender: Any) {
         motor?.speed(rpm: speedRPM)
+        showCommandAlert("Speed \(speedRPM) rpm")
     }
     
     @IBAction func speedStepperChanged(_ sender: Any) {
@@ -196,22 +201,26 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     @IBAction func runReverseButtonTapped(_ sender: Any) {
         showEnableAndSpeedAlert()
         motor?.runReverse()
+        showCommandAlert("Run reverse")
     }
     
     @IBAction func runForwardButtonTapped(_ sender: Any) {
         showEnableAndSpeedAlert()
         motor?.runForward()
+        showCommandAlert("Run forward")
     }
     
     @IBAction func moveToButtonTapped(_ sender: Any) {
         showEnableAndSpeedAlert()
         motor?.move(toDegree:positionDeg)
+        showCommandAlert("Disable Motor")
     }
     
     @IBAction func moveToStepperChanged(_ sender: Any) {
         let stepper = sender as! UIStepper
         positionDeg = Float32(stepper.value)
         moveToTextField.text = String(positionDeg)
+        showCommandAlert("Move to position \(positionDeg) deg.")
     }
     
     
@@ -229,6 +238,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     @IBAction func moveByButtonTapped(_ sender: Any) {
         showEnableAndSpeedAlert()
         motor?.move(byDegree: distanceDeg)
+        showCommandAlert("Move by distance \(distanceDeg) deg.")
     }
     
     @IBAction func moveByStepperTapped(_ sender: Any) {
@@ -252,6 +262,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBAction func holdButtonTapped(_ sender: Any) {
         motor?.hold(torque: holdTorque)
+        showCommandAlert("Hold torque \(holdTorque) Nm.")
     }
 
     
@@ -275,6 +286,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBAction func maxTorqueButtonTapped(_ sender: Any) {
         motor?.maxTorque(maxTorque)
+        showCommandAlert("Max torque \(maxTorque) Nm.")
 
     }
     
@@ -299,6 +311,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBAction func waitButtonTapped(_ sender: Any) {
         motor?.wait(forSec: waitTimeSec)
+        showCommandAlert("Wait for \(waitTimeSec) Second")
     }
     
     @IBAction func waitStepperChanged(_ sender: Any) {
@@ -323,9 +336,11 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
         switch  seg.selectedSegmentIndex {
         case 0:
             motor?.resume()
+            showCommandAlert("Resume queue")
             break
         case 1:
             motor?.pause()
+            showCommandAlert("Pause queue")
             break
         default:
             break
@@ -340,12 +355,14 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
             recordTasksetButton.setTitle("Record ●", for: UIControlState.normal)
             recordTasksetButton.setTitleColor(UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
 , for: UIControlState.normal)
+            showCommandAlert("Stop recording taskset at \(tasksetIndex)")
         } else {
             motor?.startRecordingTaskset(at: tasksetIndex)
             recordingLabel.text = "●"
             recordingLabel.textColor = UIColor.red
             recordTasksetButton.setTitle("Stop ■", for: UIControlState.normal)
             recordTasksetButton.setTitleColor(UIColor.red, for: UIControlState.normal)
+            showCommandAlert("Start recording taskset at \(tasksetIndex)")
         }
         
     }
@@ -374,6 +391,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
             (action: UIAlertAction!) -> Void in
             print("OK")
             self.motor?.eraseTaskset(at: self.tasksetIndex)
+            self.showCommandAlert("Erase taskset at \(self.tasksetIndex)")
         })
 
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler:{

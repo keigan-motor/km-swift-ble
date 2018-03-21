@@ -60,7 +60,9 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     // MARK: - KVO
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if (keyPath == "motors") {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
@@ -77,6 +79,7 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     // MARK: - Action
     @objc func actionButtonTapped(){
         performSegue(withIdentifier: "actionModal", sender: nil)
+        //showCommandAlert("test desu")
     }
     
     // MARK: - Scan
@@ -181,18 +184,6 @@ class KMScanViewController:UITableViewController, KMMotorDelegate, KMScanCellDel
     @IBAction func unwindToTop(segue: UIStoryboardSegue) {
     }
 
-}
-
-extension UIViewController {
-    
-    func showAlert(title:String, message:String?)
-    {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 
