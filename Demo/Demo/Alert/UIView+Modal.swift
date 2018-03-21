@@ -18,7 +18,9 @@ protocol Modal {
 extension Modal where Self:UIView{
     func show(animated:Bool){
         self.dialogView.center = CGPoint(x: self.center.x, y: self.frame.height + self.dialogView.frame.height/2)
-        UIApplication.shared.delegate?.window??.rootViewController?.view.addSubview(self)
+        if let topController = UIApplication.topViewController() {
+            topController.view.addSubview(self)
+        }
         if animated {
             UIView.animate(withDuration: 0.33, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(rawValue: 0), animations: {
                 self.dialogView.center  = CGPoint(x: self.center.x, y: self.frame.height - self.dialogView.frame.height/2 - 70)

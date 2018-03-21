@@ -213,14 +213,13 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     @IBAction func moveToButtonTapped(_ sender: Any) {
         showEnableAndSpeedAlert()
         motor?.move(toDegree:positionDeg)
-        showCommandAlert("Disable Motor")
+        showCommandAlert("Move to position \(positionDeg) deg.")
     }
     
     @IBAction func moveToStepperChanged(_ sender: Any) {
         let stepper = sender as! UIStepper
         positionDeg = Float32(stepper.value)
         moveToTextField.text = String(positionDeg)
-        showCommandAlert("Move to position \(positionDeg) deg.")
     }
     
     
@@ -352,7 +351,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
             motor?.stopRecordingTaskset()
             recordingLabel.text = "■"
             recordingLabel.textColor = UIColor.darkText
-            recordTasksetButton.setTitle("Record ●", for: UIControlState.normal)
+            recordTasksetButton.setTitle("記録開始", for: UIControlState.normal)
             recordTasksetButton.setTitleColor(UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
 , for: UIControlState.normal)
             showCommandAlert("Stop recording taskset at \(tasksetIndex)")
@@ -360,7 +359,7 @@ class KMDemoViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
             motor?.startRecordingTaskset(at: tasksetIndex)
             recordingLabel.text = "●"
             recordingLabel.textColor = UIColor.red
-            recordTasksetButton.setTitle("Stop ■", for: UIControlState.normal)
+            recordTasksetButton.setTitle("記録停止", for: UIControlState.normal)
             recordTasksetButton.setTitleColor(UIColor.red, for: UIControlState.normal)
             showCommandAlert("Start recording taskset at \(tasksetIndex)")
         }

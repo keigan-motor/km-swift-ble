@@ -110,22 +110,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hIe-SV-Tcj">
-                                <rect key="frame" x="127" y="40" width="120" height="29"/>
+                                <rect key="frame" x="132" y="40" width="120" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Z5X-30-eKm"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="disable"/>
-                                    <segment title="enable"/>
+                                    <segment title="不許可"/>
+                                    <segment title="許可"/>
                                 </segments>
                                 <connections>
                                     <action selector="enableSegmentChanged:" destination="Gud-Pp-AzH" eventType="valueChanged" id="OPR-mM-NFx"/>
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lmb-xR-v7a" userLabel="Taskset Stack View">
-                                <rect key="frame" x="62" y="485" width="250" height="150"/>
+                                <rect key="frame" x="67" y="485" width="250" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taskset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PY1-y3-SwN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タスクセット" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PY1-y3-SwN">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
@@ -169,12 +169,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FEV-Uc-Wzq" userLabel="Taskset Repeating Stack View">
                                         <rect key="frame" x="0.0" y="68.5" width="250" height="29"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTk-gl-iZk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="繰り返し" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTk-gl-iZk">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="WhE-tA-NOw"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -204,7 +204,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZF-d6-1x3">
                                         <rect key="frame" x="0.0" y="107.5" width="250" height="42.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="doTaskset"/>
+                                        <state key="normal" title="タスクセット開始"/>
                                         <connections>
                                             <action selector="doTasksetTapped:" destination="Gud-Pp-AzH" eventType="touchUpInside" id="vM4-xF-WYX"/>
                                         </connections>
@@ -218,17 +218,20 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTt-ra-FA2">
-                                <rect key="frame" x="323" y="611" width="32" height="36"/>
+                                <rect key="frame" x="323" y="611" width="41" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="K3t-9r-DE2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Exit"/>
+                                <state key="normal" title="戻る"/>
                                 <connections>
                                     <segue destination="q4Z-eB-974" kind="unwind" unwindAction="unwindToTopWithSegue:" id="lfo-j8-HZe"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KFS-SV-Bx6" userLabel="Teaching-Playback Stack View">
-                                <rect key="frame" x="62" y="88" width="250" height="362"/>
+                                <rect key="frame" x="67" y="88" width="250" height="362"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teaching-Playback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3y-nE-sAq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ティーチング・プレイバック" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3y-nE-sAq">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="5Af-xb-ENB"/>
@@ -278,12 +281,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ac2-c6-514" userLabel="Teaching Repeating Stack View">
                                         <rect key="frame" x="0.0" y="81" width="250" height="29"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="po8-FT-06Z">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="繰り返し" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="po8-FT-06Z">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="VtG-5D-qoX"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -319,7 +322,7 @@
                                             <constraint firstAttribute="height" constant="32" id="vt5-BP-92Y"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="eraseMotion"/>
+                                        <state key="normal" title="モーション消去"/>
                                         <connections>
                                             <action selector="eraseMotionTapped:" destination="Gud-Pp-AzH" eventType="touchUpInside" id="Ahh-tQ-AyR"/>
                                         </connections>
@@ -329,8 +332,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="xq2-dm-XhH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="prepareTeachingMotion"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="ティーチング準備"/>
                                         <connections>
                                             <action selector="prepareTeachingMotionTapped:" destination="Gud-Pp-AzH" eventType="touchUpInside" id="PF4-Uq-lb7"/>
                                         </connections>
@@ -341,7 +344,7 @@
                                             <constraint firstAttribute="height" constant="32" id="dTl-dk-Eyc"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="startTeachingMotion"/>
+                                        <state key="normal" title="ティーチング開始"/>
                                         <connections>
                                             <action selector="startTeachingMotionTapped:" destination="Gud-Pp-AzH" eventType="touchUpInside" id="glA-CA-7sL"/>
                                         </connections>
@@ -351,8 +354,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="kV1-NR-eDd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="stopTeachingMotion"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="ティーチング停止"/>
                                         <connections>
                                             <action selector="stopTeachingMotionTapped:" destination="Gud-Pp-AzH" eventType="touchUpInside" id="kPJ-Gr-Nou"/>
                                         </connections>
@@ -363,18 +366,18 @@
                                             <constraint firstAttribute="height" constant="32" id="Rx5-Ko-5gl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="preparePlaybackMotion"/>
+                                        <state key="normal" title="許可・プレイバック準備"/>
                                         <connections>
                                             <action selector="preparePlaybackMotionTapped:" destination="Gud-Pp-AzH" eventType="touchUpInside" id="j66-em-Mdi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rk-ge-MBG">
-                                        <rect key="frame" x="0.0" y="330" width="158" height="32"/>
+                                        <rect key="frame" x="0.0" y="330" width="139" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="h5v-a3-fKN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="startPlaybackMotion"/>
+                                        <state key="normal" title="プレイバック開始"/>
                                         <connections>
                                             <action selector="startPlaybackMotionTapped:" destination="Gud-Pp-AzH" eventType="touchUpInside" id="RGT-dV-bK3"/>
                                         </connections>
@@ -532,8 +535,8 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="bcc-Tq-U73"/>
                                                         </constraints>
                                                         <segments>
-                                                            <segment title="disable"/>
-                                                            <segment title="enable"/>
+                                                            <segment title="不許可"/>
+                                                            <segment title="許可"/>
                                                         </segments>
                                                         <connections>
                                                             <action selector="enableSegmentTapped:" destination="JM5-gb-sfy" eventType="valueChanged" id="azK-Vp-Jt4"/>
@@ -545,7 +548,7 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Sgc-ta-BQj"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="stop"/>
+                                                        <state key="normal" title="停止"/>
                                                         <connections>
                                                             <action selector="stopButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="fS6-43-hC2"/>
                                                         </connections>
@@ -556,7 +559,7 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="DcX-Ov-Wi3"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="free"/>
+                                                        <state key="normal" title="フリー"/>
                                                         <connections>
                                                             <action selector="freeButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="llU-3H-b8d"/>
                                                         </connections>
@@ -578,7 +581,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="gpo-SK-sYn"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <state key="normal" title="speed"/>
+                                                                <state key="normal" title="速さ"/>
                                                                 <connections>
                                                                     <action selector="speedButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="Tv9-sE-J7K"/>
                                                                 </connections>
@@ -618,7 +621,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="u25-of-q26"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <state key="normal" title="runReverse"/>
+                                                                <state key="normal" title="逆回転"/>
                                                                 <connections>
                                                                     <action selector="runReverseButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="kIr-JI-9l7"/>
                                                                 </connections>
@@ -629,7 +632,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="RiJ-5P-KnB"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <state key="normal" title="runForward"/>
+                                                                <state key="normal" title="正回転"/>
                                                                 <connections>
                                                                     <action selector="runForwardButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="DfS-ZM-GOg"/>
                                                                 </connections>
@@ -653,7 +656,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="SA4-Q3-PKo"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <state key="normal" title="moveTo"/>
+                                                                <state key="normal" title="絶対位置"/>
                                                                 <connections>
                                                                     <action selector="moveToButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="FSv-lM-ovZ"/>
                                                                 </connections>
@@ -693,7 +696,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="cbY-Ro-Ndm"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <state key="normal" title="moveBy"/>
+                                                                <state key="normal" title="相対位置"/>
                                                                 <connections>
                                                                     <action selector="moveByButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="yur-B2-JXM"/>
                                                                 </connections>
@@ -744,7 +747,7 @@
                                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="bjF-rY-Oaz"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <state key="normal" title="hold"/>
+                                                                        <state key="normal" title="トルク維持"/>
                                                                         <connections>
                                                                             <action selector="holdButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="5kX-Jo-BLA"/>
                                                                         </connections>
@@ -785,7 +788,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="Hk1-Mm-3gM"/>
                                                                 </constraints>
-                                                                <state key="normal" title="maxTorque"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <state key="normal" title="最大トルク"/>
                                                                 <connections>
                                                                     <action selector="maxTorqueButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="fuN-xz-Brs"/>
                                                                 </connections>
@@ -818,46 +822,6 @@
                                                     <constraint firstAttribute="width" constant="280" id="zvK-uh-4sq"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="r7S-3k-XiR" userLabel="Taskset Stack View">
-                                                <rect key="frame" x="47.5" y="587" width="280" height="30"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2f-fS-eAK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="mcq-qf-dLj"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="taskset ●"/>
-                                                        <connections>
-                                                            <action selector="recordTasksetButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="v3G-c8-gbX"/>
-                                                        </connections>
-                                                    </button>
-                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="49" translatesAutoresizingMaskIntoConstraints="NO" id="l8g-Mt-0Ng">
-                                                        <rect key="frame" x="100" y="0.0" width="94" height="29"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Lzq-Gk-tbg"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <action selector="tasksetIndexStepperChanged:" destination="JM5-gb-sfy" eventType="valueChanged" id="co1-im-eE4"/>
-                                                        </connections>
-                                                    </stepper>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0-49x" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWu-2d-ep3">
-                                                        <rect key="frame" x="200" y="0.0" width="80" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="85W-Bp-KWJ"/>
-                                                        </constraints>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <action selector="tasksetIndexTextFieldEdited:" destination="JM5-gb-sfy" eventType="editingDidEnd" id="MDT-U4-ZjA"/>
-                                                        </connections>
-                                                    </textField>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="280" id="1Nz-N4-vxm"/>
-                                                </constraints>
-                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="■" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Var-78-TU9">
                                                 <rect key="frame" x="345" y="10" width="20" height="24"/>
                                                 <constraints>
@@ -876,7 +840,7 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="tsJ-Yz-SNc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="wait"/>
+                                                        <state key="normal" title="待機"/>
                                                         <connections>
                                                             <action selector="waitButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="o0t-jB-Dvs"/>
                                                         </connections>
@@ -908,18 +872,68 @@
                                                 </constraints>
                                             </stackView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-cr-kiW">
-                                                <rect key="frame" x="128" y="539" width="119" height="29"/>
+                                                <rect key="frame" x="107.5" y="539" width="160" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="Cvh-fF-Acx"/>
+                                                </constraints>
                                                 <segments>
-                                                    <segment title="resume"/>
-                                                    <segment title="pause"/>
+                                                    <segment title="再開"/>
+                                                    <segment title="一時停止"/>
                                                 </segments>
                                                 <connections>
                                                     <action selector="pauseSegmentChanged:" destination="JM5-gb-sfy" eventType="valueChanged" id="6rA-51-psu"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タスクセット" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4O-wC-oHT">
+                                                <rect key="frame" x="135" y="597" width="104" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="r7S-3k-XiR" userLabel="Taskset Stack View">
+                                                <rect key="frame" x="47" y="660.5" width="280" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2f-fS-eAK">
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="mcq-qf-dLj"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="記録開始"/>
+                                                        <connections>
+                                                            <action selector="recordTasksetButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="v3G-c8-gbX"/>
+                                                        </connections>
+                                                    </button>
+                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="49" translatesAutoresizingMaskIntoConstraints="NO" id="l8g-Mt-0Ng">
+                                                        <rect key="frame" x="100" y="0.0" width="94" height="29"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Lzq-Gk-tbg"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="tasksetIndexStepperChanged:" destination="JM5-gb-sfy" eventType="valueChanged" id="co1-im-eE4"/>
+                                                        </connections>
+                                                    </stepper>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0-49x" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWu-2d-ep3">
+                                                        <rect key="frame" x="200" y="0.0" width="80" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="85W-Bp-KWJ"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="tasksetIndexTextFieldEdited:" destination="JM5-gb-sfy" eventType="editingDidEnd" id="MDT-U4-ZjA"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="280" id="1Nz-N4-vxm"/>
+                                                </constraints>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIu-Ac-AyC">
-                                                <rect key="frame" x="143" y="627" width="89" height="30"/>
-                                                <state key="normal" title="eraseTaskset"/>
+                                                <rect key="frame" x="170" y="622.5" width="35" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="消去"/>
                                                 <connections>
                                                     <action selector="eraseTasksetButtonTapped:" destination="JM5-gb-sfy" eventType="touchUpInside" id="KAc-dK-BR1"/>
                                                 </connections>
@@ -931,17 +945,19 @@
                                             <constraint firstAttribute="trailing" secondItem="Var-78-TU9" secondAttribute="trailing" constant="10" id="4cE-0F-eCf"/>
                                             <constraint firstItem="KyA-i1-mCf" firstAttribute="top" secondItem="dLC-Tl-1sq" secondAttribute="bottom" constant="20" id="4hJ-oa-mMa"/>
                                             <constraint firstItem="dQQ-nk-25e" firstAttribute="centerX" secondItem="Fnj-5M-hcX" secondAttribute="centerX" id="EGb-Tl-QiC"/>
+                                            <constraint firstItem="yIu-Ac-AyC" firstAttribute="top" secondItem="B4O-wC-oHT" secondAttribute="bottom" constant="5" id="FIf-o0-Qd3"/>
                                             <constraint firstItem="Var-78-TU9" firstAttribute="top" secondItem="Fnj-5M-hcX" secondAttribute="top" constant="10" id="GCw-fO-tFN"/>
                                             <constraint firstItem="ZPZ-cr-kiW" firstAttribute="top" secondItem="IDW-jG-Qbz" secondAttribute="bottom" constant="10" id="GE7-cb-DL9"/>
-                                            <constraint firstItem="r7S-3k-XiR" firstAttribute="top" secondItem="ZPZ-cr-kiW" secondAttribute="bottom" constant="20" id="GL9-kr-AEZ"/>
                                             <constraint firstItem="r7S-3k-XiR" firstAttribute="centerX" secondItem="Fnj-5M-hcX" secondAttribute="centerX" id="J7d-Ol-G49"/>
                                             <constraint firstItem="dLC-Tl-1sq" firstAttribute="centerX" secondItem="Fnj-5M-hcX" secondAttribute="centerX" id="Lxb-Yp-7h7"/>
                                             <constraint firstAttribute="height" constant="900" id="NNZ-Qm-d2b"/>
                                             <constraint firstItem="xDe-jj-bVJ" firstAttribute="top" secondItem="zjy-1g-gmW" secondAttribute="bottom" constant="30" id="Nab-T6-d6N"/>
                                             <constraint firstItem="Var-78-TU9" firstAttribute="leading" secondItem="dQQ-nk-25e" secondAttribute="trailing" constant="38" id="V3F-0X-eyT"/>
+                                            <constraint firstItem="B4O-wC-oHT" firstAttribute="centerX" secondItem="Fnj-5M-hcX" secondAttribute="centerX" id="WxH-b2-quK"/>
                                             <constraint firstItem="yIu-Ac-AyC" firstAttribute="centerX" secondItem="Fnj-5M-hcX" secondAttribute="centerX" id="XzS-Fz-d7L"/>
+                                            <constraint firstItem="B4O-wC-oHT" firstAttribute="top" secondItem="ZPZ-cr-kiW" secondAttribute="bottom" constant="30" id="Ybi-3K-5Li"/>
                                             <constraint firstItem="zjy-1g-gmW" firstAttribute="centerX" secondItem="Fnj-5M-hcX" secondAttribute="centerX" id="eN2-8n-4fz"/>
-                                            <constraint firstItem="yIu-Ac-AyC" firstAttribute="top" secondItem="r7S-3k-XiR" secondAttribute="bottom" constant="10" id="mio-Ki-SnO"/>
+                                            <constraint firstItem="r7S-3k-XiR" firstAttribute="top" secondItem="yIu-Ac-AyC" secondAttribute="bottom" constant="5" id="fzE-ge-2Pr"/>
                                             <constraint firstItem="xDe-jj-bVJ" firstAttribute="centerX" secondItem="Fnj-5M-hcX" secondAttribute="centerX" id="qkI-ae-jKA"/>
                                             <constraint firstItem="IDW-jG-Qbz" firstAttribute="top" secondItem="KyA-i1-mCf" secondAttribute="bottom" constant="20" id="rFZ-ZU-8d2"/>
                                             <constraint firstItem="dQQ-nk-25e" firstAttribute="top" secondItem="Fnj-5M-hcX" secondAttribute="top" constant="20" id="rnD-CX-WcK"/>

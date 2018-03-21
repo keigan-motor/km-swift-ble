@@ -108,11 +108,13 @@ class KMPlayViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
             for m in connectedMotors {
                 m?.disable()
             }
+            showCommandAlert("Disable all motors")
             break
         case 1:
             for m in connectedMotors {
                 m?.enable()
             }
+            showCommandAlert("Enable all motors")
             break
         default:
             break
@@ -183,6 +185,7 @@ class KMPlayViewController:UIViewController, KMMotorDelegate, UITextFieldDelegat
     
     @IBAction func preparePlaybackMotionTapped(_ sender: Any) {
         for m in connectedMotors {
+            m?.enable() // TODO
             m?.preparePlaybackMotion(at: teachingPlaybackIndex, repeating: playbackRepeating, option: 0) // TODO option will be supported by device firmware in the future
         }
         showCommandAlert("Prepare playback motion at \(teachingPlaybackIndex)")

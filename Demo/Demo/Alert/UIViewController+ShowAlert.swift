@@ -36,9 +36,10 @@ extension UIViewController {
     
     func showCommandAlert(_ command:String){
         
+        print("showCommandAlert")
         let commandAlert = KMCommandAlertView(title: command)
         commandAlert.show(animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             commandAlert.dismiss(animated: true)
         }
         

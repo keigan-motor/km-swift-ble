@@ -16,6 +16,7 @@
 		10B08B392062854F00238047 /* KMCommandAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B08B382062854F00238047 /* KMCommandAlertView.swift */; };
 		10B08B3B2062856F00238047 /* UIView+Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B08B3A2062856F00238047 /* UIView+Modal.swift */; };
 		10B08B3D20628E5E00238047 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B08B3C20628E5E00238047 /* UIColor+Hex.swift */; };
+		10B08B402062A42200238047 /* UIApplication+Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B08B3F2062A42200238047 /* UIApplication+Top.swift */; };
 		10C0393E1FEDF57C003CA070 /* KMScanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0393B1FEDF57C003CA070 /* KMScanCell.swift */; };
 		10C0393F1FEDF57C003CA070 /* KMScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0393C1FEDF57C003CA070 /* KMScanViewController.swift */; };
 		10C039401FEDF57C003CA070 /* KMDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0393D1FEDF57C003CA070 /* KMDemoViewController.swift */; };
@@ -44,6 +45,7 @@
 		10B08B382062854F00238047 /* KMCommandAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMCommandAlertView.swift; sourceTree = "<group>"; };
 		10B08B3A2062856F00238047 /* UIView+Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Modal.swift"; sourceTree = "<group>"; };
 		10B08B3C20628E5E00238047 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		10B08B3F2062A42200238047 /* UIApplication+Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Top.swift"; sourceTree = "<group>"; };
 		10C0393B1FEDF57C003CA070 /* KMScanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMScanCell.swift; sourceTree = "<group>"; };
 		10C0393C1FEDF57C003CA070 /* KMScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMScanViewController.swift; sourceTree = "<group>"; };
 		10C0393D1FEDF57C003CA070 /* KMDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMDemoViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				10B08B3A2062856F00238047 /* UIView+Modal.swift */,
 				10B08B382062854F00238047 /* KMCommandAlertView.swift */,
 				10B08B3C20628E5E00238047 /* UIColor+Hex.swift */,
+				10B08B3F2062A42200238047 /* UIApplication+Top.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				10C039581FEDFE39003CA070 /* KMMotorLED.swift in Sources */,
 				10C0395C1FEDFE39003CA070 /* CRC16.swift in Sources */,
 				10C039521FEDFE39003CA070 /* KMMotor.swift in Sources */,
+				10B08B402062A42200238047 /* UIApplication+Top.swift in Sources */,
 				10B08B3520627DCE00238047 /* UIViewController+ShowAlert.swift in Sources */,
 				10C039571FEDFE39003CA070 /* KMMotorCommand.swift in Sources */,
 				10C0393E1FEDF57C003CA070 /* KMScanCell.swift in Sources */,
