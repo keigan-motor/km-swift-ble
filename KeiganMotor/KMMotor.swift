@@ -277,33 +277,60 @@ extension KMMotor {
         return taskID
     }
     
-    
     /// Get initial own LED Color from DeviceName
     ///
     /// - Returns: LED Color array with CGFloat type
-    public func getOwnColorFromDeviceName() -> [CGFloat]
+    func getOwnColorFromDeviceName() -> [CGFloat]
     {
         var r:CGFloat = 0
         var g:CGFloat = 0
         var b:CGFloat = 0
         
-        let idx = name.index(of: "#")
+        let rgbString = (name.components(separatedBy: "#"))[1]
         
-        if let index = idx {
-            let red_index = name.index(index, offsetBy: 1)
-            let green_index = name.index(index, offsetBy: 2)
-            let blue_index = name.index(index, offsetBy: 3)
+        print(rgbString)
+        if rgbString.count >= 3 {
+            let red_index = rgbString.startIndex
+            let green_index = rgbString.index(red_index, offsetBy: 1)
+            let blue_index = rgbString.index(red_index, offsetBy: 2)
             
-            let r_str = String(name[red_index])
-            let g_str = String(name[green_index])
-            let b_str = String(name[blue_index])
+            let r_str = String(rgbString[red_index])
+            let g_str = String(rgbString[green_index])
+            let b_str = String(rgbString[blue_index])
+            //print(r_str, g_str, b_str)
             
-            r = CGFloat(Double(Int(r_str, radix: 16)!) * 17 / 0.5 / 255)
-            g = CGFloat(Double(Int(g_str, radix: 16)!) * 17 / 0.5 / 255)
-            b = CGFloat(Double(Int(b_str, radix: 16)!) * 17 / 0.5 / 255)
+            let r_col = Int(r_str, radix: 16)!
+            let g_col = Int(g_str, radix: 16)!
+            let b_col = Int(b_str, radix: 16)!
+            
+            //print("col: ",r_col, g_col, b_col)
+            r = CGFloat(Double(r_col) * 17 / 0.5 / 255)
+            g = CGFloat(Double(g_col) * 17 / 0.5 / 255)
+            b = CGFloat(Double(b_col) * 17 / 0.5 / 255)
+        } else {
+            print("Invalid LED Numbers !!")
+            r = 0
+            g = 0
+            b = 0
         }
         
-        // print("RGB color is \(r,g,b).")
+//        let idx = name.index(of: "#")
+//
+//        if let index = idx { 
+//            let red_index = name.index(index, offsetBy: 1)
+//            let green_index = name.index(index, offsetBy: 2)
+//            let blue_index = name.index(index, offsetBy: 3)
+//
+//            let r_str = String(name[red_index])
+//            let g_str = String(name[green_index])
+//            let b_str = String(name[blue_index])
+//
+//            r = CGFloat(Double(Int(r_str, radix: 16)!) * 17 / 0.5 / 255)
+//            g = CGFloat(Double(Int(g_str, radix: 16)!) * 17 / 0.5 / 255)
+//            b = CGFloat(Double(Int(b_str, radix: 16)!) * 17 / 0.5 / 255)
+//        }
+        
+        print("RGB color is \(r,g,b).")
         return [r, g, b]
     }
 }

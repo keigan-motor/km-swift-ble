@@ -27,7 +27,6 @@
 		10C039561FEDFE39003CA070 /* KMMotorDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039491FEDFE38003CA070 /* KMMotorDefinition.swift */; };
 		10C039571FEDFE39003CA070 /* KMMotorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0394A1FEDFE38003CA070 /* KMMotorCommand.swift */; };
 		10C039581FEDFE39003CA070 /* KMMotorLED.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0394B1FEDFE38003CA070 /* KMMotorLED.swift */; };
-		10C039591FEDFE39003CA070 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0394D1FEDFE38003CA070 /* Info.plist */; };
 		10C0395A1FEDFE39003CA070 /* TypeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0394F1FEDFE38003CA070 /* TypeUtility.swift */; };
 		10C0395B1FEDFE39003CA070 /* EnumEnumerable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039501FEDFE38003CA070 /* EnumEnumerable+Extension.swift */; };
 		10C0395C1FEDFE39003CA070 /* CRC16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C039511FEDFE38003CA070 /* CRC16.swift */; };
@@ -207,7 +206,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C039591FEDFE39003CA070 /* Info.plist in Resources */,
 				10511D821FC80C480022624E /* LaunchScreen.storyboard in Resources */,
 				10511D7F1FC80C480022624E /* Assets.xcassets in Resources */,
 				10511D7D1FC80C480022624E /* Main.storyboard in Resources */,
